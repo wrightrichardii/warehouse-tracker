@@ -431,9 +431,9 @@
             };
 
             return (
-                <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 p-2">
-                    <div className="max-w-[1600px] mx-auto">
-                        <div className="bg-white rounded-lg shadow-md p-4 mb-4">
+                <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 p-4">
+                    <div className="max-w-[1400px] mx-auto">
+                        <div className="bg-white rounded-lg shadow-md p-6 mb-6">
                             <div className="flex justify-between items-center">
                                 <div>
                                     <h1 className="text-3xl font-bold text-slate-800 flex items-center gap-2">
@@ -485,38 +485,38 @@
                             </div>
                         </div>
 
-                        <div className="bg-white rounded-lg shadow-md p-3">
-                            <div className="w-full">
-                                <div className="flex mb-1.5 justify-center">
-                                    <div className="w-6 flex-shrink-0"></div>
+                        <div className="bg-white rounded-lg shadow-md p-4 mb-6">
+                            <div className="overflow-x-auto">
+                                <div className="flex mb-2">
+                                    <div className="w-8 flex-shrink-0"></div>
                                     {Array(COLS).fill(null).map((_, i) => (
-                                        <div key={i} className="w-11 flex-shrink-0 mx-px text-center text-xs font-bold text-slate-600">
+                                        <div key={i} className="w-14 flex-shrink-0 mx-0.5 text-center text-xs font-bold text-slate-600">
                                             C{i + 1}
                                         </div>
                                     ))}
                                 </div>
                                 
                                 {Array(ROWS).fill(null).map((_, rowIndex) => (
-                                    <div key={rowIndex} className="flex mb-1.5 justify-center">
-                                        <div className="w-6 flex-shrink-0 flex items-center justify-center text-xs font-bold text-slate-600">
+                                    <div key={rowIndex} className="flex mb-2">
+                                        <div className="w-8 flex-shrink-0 flex items-center justify-center text-xs font-bold text-slate-600">
                                             R{rowIndex + 1}
                                         </div>
                                         
                                         {stacks.filter(s => s.row === rowIndex + 1).map(stack => (
                                             <div
                                                 key={stack.id}
-                                                className={`w-11 h-16 flex-shrink-0 mx-px rounded border-2 ${getStackColor(stack)} transition-all hover:shadow-lg relative group cursor-pointer`}
+                                                className={`w-14 h-18 flex-shrink-0 mx-0.5 rounded border-2 ${getStackColor(stack)} transition-all hover:shadow-lg relative group cursor-pointer`}
                                                 onClick={() => setSelectedStackView(stack)}
                                             >
                                                 {stack.isBlocked ? (
                                                     <div className="flex flex-col items-center justify-center h-full text-red-600">
-                                                        <Lock size={12} />
-                                                        <span className="text-[7px] font-bold mt-0.5">BLOCKED</span>
+                                                        <Lock size={14} />
+                                                        <span className="text-[8px] font-bold mt-0.5">BLOCKED</span>
                                                     </div>
                                                 ) : (
                                                     <div className="flex flex-col h-full p-1">
                                                         <div className="flex justify-between items-center mb-1">
-                                                            <span className="text-[7px] font-bold text-slate-700">{stack.pallets.length}/3</span>
+                                                            <span className="text-[8px] font-bold text-slate-700">{stack.pallets.length}/3</span>
                                                             <button
                                                                 onClick={(e) => {
                                                                     e.stopPropagation();
@@ -524,7 +524,7 @@
                                                                 }}
                                                                 className="p-0.5 rounded bg-slate-100 hover:bg-slate-200 opacity-0 group-hover:opacity-100 transition-opacity"
                                                             >
-                                                                <Unlock size={7} />
+                                                                <Unlock size={8} />
                                                             </button>
                                                         </div>
                                                         
@@ -532,12 +532,12 @@
                                                             {stack.pallets.map((pallet, idx) => (
                                                                 <div
                                                                     key={pallet.id}
-                                                                    className="bg-blue-500 rounded-sm h-3 flex items-center justify-center cursor-pointer hover:bg-blue-600 px-0.5"
+                                                                    className="bg-blue-500 rounded-sm h-3.5 flex items-center justify-center cursor-pointer hover:bg-blue-600 px-0.5"
                                                                     title={`${getStackPosition(idx, stack.pallets.length)}: ${pallet.content}`}
                                                                     onClick={() => setSelectedStackView(stack)}
                                                                 >
-                                                                    <span className="text-[6px] text-white font-bold truncate w-full text-center">
-                                                                        {pallet.content.substring(0, 6)}
+                                                                    <span className="text-[7px] text-white font-bold truncate w-full text-center">
+                                                                        {pallet.content.substring(0, 7)}
                                                                     </span>
                                                                 </div>
                                                             ))}
@@ -551,7 +551,7 @@
                                                                     setSelectedPosition('bottom');
                                                                     setShowAddModal(true);
                                                                 }}
-                                                                className="w-full mt-1 bg-blue-600 hover:bg-blue-700 text-white py-0.5 rounded text-[7px] opacity-0 group-hover:opacity-100 transition-opacity"
+                                                                className="w-full mt-1 bg-blue-600 hover:bg-blue-700 text-white py-0.5 rounded text-[8px] opacity-0 group-hover:opacity-100 transition-opacity"
                                                             >
                                                                 +
                                                             </button>
@@ -559,7 +559,7 @@
                                                     </div>
                                                 )}
                                                 
-                                                <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-slate-800 text-white text-[9px] px-2 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none z-10">
+                                                <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-slate-800 text-white text-[10px] px-2 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none z-10">
                                                     {stack.name}
                                                 </div>
                                             </div>
